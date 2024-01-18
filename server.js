@@ -100,7 +100,7 @@ app.post("/users/signup", function (req, res) {
   newUser
     .save()
     .then(() => {
-      res.set("Access-Control-Allow-Origin", "http://localhost:4200");
+      res.set("Access-Control-Allow-Origin", "https://profound-caramel-7936bf.netlify.app");
       //res.send("Data Saved sucessfully");
       res.json({ code: 200, msg: "Data Saved Suceessfully" });
     })
@@ -126,10 +126,10 @@ app.post("/users/login", async (req, res) => {
   //     message: "Incorrect Password !"
   //   });
   if (foundUser && bcrypt.compare(password, foundUser.password)) {
-    res.set("Access-Control-Allow-Origin", "http://localhost:4200");
+    res.set("Access-Control-Allow-Origin", "https://profound-caramel-7936bf.netlify.app");
     res.json({ code: 200, msg: "Users Validated Sucessfully" });
   } else {
-    res.set("Access-Control-Allow-Origin", "http://localhost:4200");
+    res.set("Access-Control-Allow-Origin", "https://profound-caramel-7936bf.netlify.app");
     res.json({ code: 401, msg: "User Not Validated" });
   }
 });
@@ -137,10 +137,10 @@ app.post("/users/login", async (req, res) => {
 app.get("/users/list", async (req, res) => {
   const userdata = await userModel.find();
   if (!userdata) {
-    res.set("Access-Control-Allow-Origin", "http://localhost:4200");
+    res.set("Access-Control-Allow-Origin", "https://profound-caramel-7936bf.netlify.app");
     res.json({ code: 200, msg: "No Users found" });
   } else {
-    res.set("Access-Control-Allow-Origin", "http://localhost:4200");
+    res.set("Access-Control-Allow-Origin", "https://profound-caramel-7936bf.netlify.app");
     res.json(userdata);
   }
 
@@ -148,16 +148,16 @@ app.get("/users/list", async (req, res) => {
 
 app.post('/users/upload', upload.single('file'), (req, res) => {
   if (!req.file) {
-    res.set("Access-Control-Allow-Origin", "http://localhost:4200");
+    res.set("Access-Control-Allow-Origin", "https://profound-caramel-7936bf.netlify.app");
     return res.status(400).json({ error: 'No file uploaded' });
   }
-  res.set("Access-Control-Allow-Origin", "http://localhost:4200");
+  res.set("Access-Control-Allow-Origin", "https://profound-caramel-7936bf.netlify.app");
   res.json({ message: 'File uploaded successfully', filename: req.file.filename });
 });
 app.get('/users/downloadfile/:filename', (req, res) => {
   const filePath = __dirname + "/uploads/" + req.params.filename;
   console.log(req.params.filename);
-  res.set("Access-Control-Allow-Origin", "http://localhost:4200");
+  res.set("Access-Control-Allow-Origin", "https://profound-caramel-7936bf.netlify.app");
   res.download(
     filePath,
     "imagetest.png",
@@ -202,7 +202,7 @@ app.post("/users/add", function (req, res) {
   newUser
     .save()
     .then(() => {
-      res.set("Access-Control-Allow-Origin", "http://localhost:4200");
+      res.set("Access-Control-Allow-Origin", "https://profound-caramel-7936bf.netlify.app");
       //res.send("Data Saved sucessfully");
       res.json({ code: 200, msg: "Data Saved Suceessfully" });
     })
@@ -224,7 +224,7 @@ app.put('/user/update/:id', (req, res) => {
   userModel.updateOne({ _id: req.params.id }, newUser).then(
     () => {
 
-      res.set("Access-Control-Allow-Origin", "http://localhost:4200");
+      res.set("Access-Control-Allow-Origin", "https://profound-caramel-7936bf.netlify.app");
 
       res.status(201).json({
         message: 'User updated successfully!'
@@ -244,10 +244,10 @@ app.put('/user/update/:id', (req, res) => {
 app.get("/user/show/:id", async (req, res) => {
   const userdata = await userModel.findOne({ _id: req.params.id });
   if (!userdata) {
-    res.set("Access-Control-Allow-Origin", "http://localhost:4200");
+    res.set("Access-Control-Allow-Origin", "https://profound-caramel-7936bf.netlify.app");
     res.json({ code: 200, msg: "No Users found" });
   } else {
-    res.set("Access-Control-Allow-Origin", "http://localhost:4200");
+    res.set("Access-Control-Allow-Origin", "https://profound-caramel-7936bf.netlify.app");
     res.json(userdata);
   }
 
@@ -256,10 +256,10 @@ app.get("/user/show/:id", async (req, res) => {
 app.get("/user/find/:name", async (req, res) => {
   const userdata = await userModel.findOne({ firstname: req.params.name });
   if (!userdata) {
-    res.set("Access-Control-Allow-Origin", "http://localhost:4200");
+    res.set("Access-Control-Allow-Origin", "https://profound-caramel-7936bf.netlify.app");
     res.json({ code: 200, msg: "No Users found" });
   } else {
-    res.set("Access-Control-Allow-Origin", "http://localhost:4200");
+    res.set("Access-Control-Allow-Origin", "https://profound-caramel-7936bf.netlify.app");
 
     res.send({ "status": true, "data": userdata });
 
@@ -324,11 +324,11 @@ app.post('/users/send-email', (req, res) => {
   };
   transporter.sendMail(mailOptions, (error, info) => {
     if (error) {
-      res.set("Access-Control-Allow-Origin", "http://localhost:4200");
+      res.set("Access-Control-Allow-Origin", "https://profound-caramel-7936bf.netlify.app");
       res.json({ code: 500, msg: "Email not sent" });
 
     } else {
-      res.set("Access-Control-Allow-Origin", "http://localhost:4200");
+      res.set("Access-Control-Allow-Origin", "https://profound-caramel-7936bf.netlify.app");
       res.status(200).json({ message: 'Email sent successfully' });
     }
   });
