@@ -14,10 +14,11 @@ var encryptor = require("simple-encryptor")(key);
 var router = express.Router();
 const multer = require('multer');
 const nodemailer = require('nodemailer');
-app.use(express.json());
-app.use(cors());
+
 mongoose.set("strictQuery", false);
 const app = express();
+app.use(express.json());
+app.use(cors());
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
     cb(null, 'uploads/');
