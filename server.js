@@ -306,10 +306,11 @@ app.post('/users/send-email', (req, res) => {
   const email = req.body.email;
   const message = req.body.message;
   const transporter = nodemailer.createTransport({
-    service: 'gmail',
+    host: "sandbox.smtp.mailtrap.io",
+    port: 2525,
     auth: {
-      user: process.user,
-      pass:process.pass
+      user: "4ebcf516fb05ae",
+      pass: "2b297884913cd"
     }
   });
   const mailOptions = {
@@ -324,6 +325,7 @@ app.post('/users/send-email', (req, res) => {
   };
   transporter.sendMail(mailOptions, (error, info) => {
     if (error) {
+       console.log(error);
       res.set("Access-Control-Allow-Origin", "https://profound-caramel-7936bf.netlify.app");
       res.json({ code: 500, msg: "Email not sent" });
 
