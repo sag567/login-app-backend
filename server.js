@@ -14,6 +14,8 @@ var encryptor = require("simple-encryptor")(key);
 var router = express.Router();
 const multer = require('multer');
 const nodemailer = require('nodemailer');
+app.use(express.json());
+app.use(cors());
 mongoose.set("strictQuery", false);
 const app = express();
 const storage = multer.diskStorage({
@@ -326,11 +328,11 @@ app.post('/users/send-email', (req, res) => {
   transporter.sendMail(mailOptions, (error, info) => {
     if (error) {
        console.log(error);
-      res.set("Access-Control-Allow-Origin", "https://profound-caramel-7936bf.netlify.app");
+      //res.set("Access-Control-Allow-Origin", "https://profound-caramel-7936bf.netlify.app");
       res.json({ code: 500, msg: "Email not sent" });
 
     } else {
-      res.set("Access-Control-Allow-Origin", "https://profound-caramel-7936bf.netlify.app");
+      //res.set("Access-Control-Allow-Origin", "https://profound-caramel-7936bf.netlify.app");
       res.status(200).json({ message: 'Email sent successfully' });
     }
   });
@@ -352,5 +354,4 @@ mongoose
   .catch((error) => {
     console.log(error);
   });
-app.use(express.json());
-app.use(cors());
+
