@@ -334,7 +334,7 @@ app.post('/users/send-email', (req, res) => {
   });
 });
 
-app.listen(process.env.PORT, function check(err) {
+app.listen(process.env.PORT||2000, function check(err) {
   if (err) console.log("error");
   else console.log("working");
 });
